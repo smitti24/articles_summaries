@@ -1,5 +1,6 @@
 # Handling multiple views
 Link - https://github.com/ar124official2019/toggle-group-dev#readme
+Author - https://sws-by-ar.medium.com/
 
 ### Use Cases:
 * Multiple views on the same page that we have to toggle between using a variable
