@@ -1,4 +1,5 @@
 # Handling multiple views
+Link - https://github.com/ar124official2019/toggle-group-dev#readme
 
 ### Use Cases:
 * Multiple views on the same page that we have to toggle between using a variable
@@ -45,10 +46,14 @@ class AppComponent implements OnInit {
 
 #### Handle Tabs:
 **Open a tab**
-* dropOpen(key: string): ToggleGroup
+```
+dropOpen(key: string): ToggleGroup
+```
 
 **Get status of a tab**
-* getValue(key: string): ToggleGroup -> used to determine the status of a tab.
+```
+getValue(key: string): ToggleGroup -> used to determine the status of a tab.
+```
 
 ```
 class AppComponent implements OnInit {
@@ -62,3 +67,76 @@ class AppComponent implements OnInit {
 }
 
 ```
+
+```
+<div class="app">
+    <div class="nav flex">
+        <button *ngFor="let tab of tabTitles" (click)="tg.dropOpen(tab)>{{tab}}</button>
+    </div>
+
+    <div class="tab-view" *ngIf="tg.getValue('Home')">
+        <h2>HOME</h2>
+    </div>
+
+    <div class="tab-view" *ngIf="tg.getValue('Posts')">
+        <h2>Posts</h2>
+    </div>
+
+    <div class="tab-view" *ngIf="tg.getValue('Job')">
+        <h2>Job</h2>
+    </div>
+</div>
+```
+
+### Other methods for expanding/collapsing
+**Toggle:**
+* Method toggles value on-off based on current value, against a key
+```
+toggle(key: string): ToggleGroup
+```
+
+**Turn On / View in:**
+* Method open is used to toggle on a control, a key is passed to it, and it sets the value to true.
+```
+open(key: string): ToggleGroup
+```
+
+**Turn Off / View out:**
+```
+close(key: string): ToggleGroup
+```
+
+**Turn Off all controls:**
+```
+closeAll(): ToggleGroup
+```
+
+**Turn on all controls:**
+```
+openAll(): ToggleGroup
+```
+
+**Get value of a particular toggle**
+```
+getValue(key: string): boolean
+```
+
+**Set value of a particular toggle**
+```
+setValue(key: string, value: boolean)
+```
+
+**Together**
+```
+export class AppComponent {
+    section = new ToggleGroup([
+        {key: 'One', value: true},
+        {key: 'Two', value: true},
+        {key: 'Three', value: false},
+        {key: 'Four', value: true},
+        {key: 'Five', value: true},
+    ]);
+}
+```
+
+
